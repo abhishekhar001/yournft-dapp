@@ -158,3 +158,8 @@ transition-delay: 0s, 0s;}
 .boxShadow_1{
   box-shadow: 3px 4px 0px 0px #4e57ef;
 }
+
+
+.aboutSec{
+  width: 70%;
+}

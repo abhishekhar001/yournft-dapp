@@ -21,7 +21,33 @@ export default function Home() {
           <code className={styles.code}>Directly using apis</code>
         </p>
 
-        <section className=''>
+        <section className={styles.aboutSec}>
+          <h1>
+            About this Blockchain application
+          </h1>
+          <ul>
+            <li>
+              We are generating Thentic API Key and then Users can use that key. (we are storing that API key in local storage so that we can show api after refeshing the page)
+            </li>
+            <li>
+
+              After generating api key users can create there own nft Collection By using Thentic API
+            </li>
+            <li>
+
+              After creating nft contracts, users can mint nfts in every contracts
+            </li>
+            <li>
+              Also there is a page in website where you can see all your Minted nfts
+            </li>
+            <li>
+              Users can also trasfer nfts
+            </li>
+          </ul>
+
+          <p>
+            This is website to mint, trade and manage NFTs across 288 Ethereum Virtual Machine Compatible Blockchains using Thentic REST API methods. You can create and embed blockchain transactions to your web applications via Transaction URL or Transaction Pixel.
+          </p>
 
         </section>
 
