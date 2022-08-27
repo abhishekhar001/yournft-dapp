@@ -1,9 +1,11 @@
 import Link from "next/link"
+import styles from '../../styles/Home.module.css'
 
-export default function CollectionItem({name,short_name,status,contract,chain_id}) {
+
+export default function CollectionItem({name,short_name,contract,status,chain_id}) {
     
   return (
-    <div className="" style={{border:"2px solid white", padding:"4px", textAlign:"center"}}>
+    <div className={styles.boxShadow_1} style={{border:"2px solid white", marginBottom:"1rem",padding:"1rem 6rem", textAlign:"center", borderRadius:"1rem"}}>
             <p>name - {name} {" "} ({short_name})</p>
             {/* <p>Status - {status}</p> */}
             <p>chain address{chain_id}</p>
@@ -12,13 +14,13 @@ export default function CollectionItem({name,short_name,status,contract,chain_id
             <>
             <p>Contract address - {contract}</p>
             <Link href={`/mint/${contract}`}>
-            <button>
+            <button className={styles.btn_sub}>
                 Mint NFT
             </button>
             </Link>
             </>
                 :
-                <button>
+                <button className={styles.btn_sub}>
                     Not deployed yet (Pending)
                 </button>
             }

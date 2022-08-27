@@ -10,12 +10,14 @@ import CollectionItem from '../components/createCollection/CollectionItem';
 const createcollection = () => {
 
   const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
-
   const [allCollection, setAllCollection] = useState(null);
+
+  const [loadingCollection, setLoadingCollection] = useState(true);
+  const [loadingCreateColletion, setLoadingCreateColletion] = useState(false)
 
   const loadAllCollections =  async() => {
     const api = "https://thentic.tech/api/contracts";
-
+    
     const values = {
       params:{
         key:yourAPikey,
@@ -24,17 +26,17 @@ const createcollection = () => {
     }
     const _res = await axios.get(api, values,{header:{"Content-Type":"application/json",key:yourAPikey,
     chain_id: 97}});
-
     console.log('====================================');
-    console.log(_res.data.contracts);
+    console.log(_res.data);
     console.log('====================================');
-
     setAllCollection(_res.data.contracts)
+    setLoadingCollection(false);
 
   }
 
     const createCollectionHandler = async (e) => {
       e.preventDefault()
+      setLoadingCreateColletion(true)
 
       if (!e.target.collectionsymbol.value || !e.target.collectionname.value) {
         return
@@ -49,10 +51,7 @@ const createcollection = () => {
 
       }
       const _res = await axios.post(api, values);
-
-      console.log('====================================');
-      console.log(_res);
-      console.log('====================================');
+      setLoadingCreateColletion(false)
       loadAllCollections()
     }
 
@@ -76,25 +75,24 @@ const createcollection = () => {
           Create New Collections
         </h1>
         <section>
-          <h4>Fill these Details</h4>
-          <form onSubmit={createCollectionHandler}>
-            <label htmlFor="collectionname">Collection Name</label>
-            <input type="text" name='collectionname' />
-            <label htmlFor="collectionsymbol">Collection Symbol</label>
-            <input type="text" name='collectionsymbol' />
-            <button type='submit'>Create Collection</button>
+          <form onSubmit={createCollectionHandler} style={{marginTop:"2rem"}}>
+            <input className={styles.input_box_main} type="text" name='collectionname' placeholder='Collection Name' />
+            <input className={styles.input_box_main} type="text" name='collectionsymbol' placeholder='Collection Symbol' />
+            
+            <button  className={styles.btn_main} type='submit'>{loadingCreateColletion? "Creating...": "Create Collection"}</button>
           </form>
         </section>
-
-        <section>
+        <section style={{textAlign:"center"}}>
           <h1>Your all collections</h1>
-          {allCollection&& allCollection.map((item,key)=>{
+          {loadingCollection?
+          <div className={styles.loader_1}></div>
+          :
+          allCollection&& allCollection.map((item,key)=>{
             return(
               <CollectionItem key={key} name={item.name} short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
             )
           })}
         </section>
-          <button></button>
         </main>
       </div>
     </>

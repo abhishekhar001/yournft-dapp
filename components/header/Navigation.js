@@ -41,7 +41,7 @@ export default function Navigation() {
                     </Link>
                     </li>
                     <li className={styles.navContainerli}>
-                    <Link href="/transfernft">
+                    <Link href="/transferNft">
                         <a className={styles.navContainera} href="#">Transfer NFT</a>
                     </Link>
                     </li>
