@@ -1,0 +1,55 @@
+import axios from 'axios';
+import Head from 'next/head'
+import { useState } from 'react';
+import styles from '../styles/Home.module.css'
+
+import { apikeystate } from '../atoms/apiStateMangment'
+import { useRecoilState } from 'recoil'
+
+
+const getapi = () => {
+    const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
+
+
+    const generateAPI = async () => {
+        const url = "https://thentic.tech/api/key"
+
+        const _api = await axios.get(url);
+        
+        localStorage.setItem('apikey', _api.data);
+        setYourAPikey(_api.data)
+    }
+
+  return (
+    <>
+      <Head>
+        <title>Get api</title>
+      </Head>
+      <div>
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Generate Your API Key
+        </h1>
+
+        <p className={styles.description}>
+          this api key will be used to ....{' '}
+          <code className={styles.code}>Directly using apis</code>
+        </p>
+
+        <section style={{textAlign:'center'}}>
+            <button onClick={generateAPI}>
+                Generate {yourAPikey && "New"} API
+            </button>
+            {yourAPikey?
+            <p>Your current API: {yourAPikey}</p>
+            :
+            <p>Please generate API. You don't have any api yet</p>
+            }
+        </section>
+        </main>
+      </div>
+    </>
+  )
+}
+
+export default getapi
