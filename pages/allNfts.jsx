@@ -6,15 +6,16 @@ import axios from 'axios';
 import { apikeystate } from '../atoms/apiStateMangment'
 import { useRecoilState } from 'recoil'
 import CollectionItem from '../components/createCollection/CollectionItem';
+import NFTCard from '../components/mintNft/NftCard';
 
-const createcollection = () => {
+const allNfts = () => {
 
   const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
 
-  const [allCollection, setAllCollection] = useState(null);
+  const [allNfts, setAllNfts] = useState(null);
 
-  const loadAllCollections =  async() => {
-    const api = "https://thentic.tech/api/contracts";
+  const loadAllNftss =  async() => {
+    const api = "https://thentic.tech/api/nfts";
 
     const values = {
       params:{
@@ -26,39 +27,17 @@ const createcollection = () => {
     chain_id: 97}});
 
     console.log('====================================');
-    console.log(_res.data.contracts);
+    console.log(_res);
     console.log('====================================');
 
-    setAllCollection(_res.data.contracts)
+    // setAllNfts(_res.data.contracts)
 
   }
 
-    const createCollectionHandler = async (e) => {
-      e.preventDefault()
-
-      if (!e.target.collectionsymbol.value || !e.target.collectionname.value) {
-        return
-      }
-    
-      const api = "https://thentic.tech/api/nfts/contract";
-      const values = {
-        key:yourAPikey,
-        chain_id: 97,
-        name:e.target.collectionname.value,
-        short_name:e.target.collectionsymbol.value
-
-      }
-      const _res = await axios.post(api, values);
-
-      console.log('====================================');
-      console.log(_res);
-      console.log('====================================');
-      loadAllCollections()
-    }
 
     useEffect(() => {
       if (yourAPikey) {
-        loadAllCollections()
+        loadAllNftss()
       }
     }, [yourAPikey])
     
@@ -68,14 +47,14 @@ const createcollection = () => {
   return (
     <>
       <Head>
-        <title>Create collection</title>
+        <title>All collection</title>
       </Head>
       <div>
         <main className={styles.main}>
         <h1 className={styles.title}>
-          Create New Collections
+          Your All Nfts
         </h1>
-        <section>
+        {/* <section>
           <h4>Fill these Details</h4>
           <form onSubmit={createCollectionHandler}>
             <label htmlFor="collectionname">Collection Name</label>
@@ -84,13 +63,12 @@ const createcollection = () => {
             <input type="text" name='collectionsymbol' />
             <button type='submit'>Create Collection</button>
           </form>
-        </section>
+        </section> */}
 
         <section>
-          <h1>Your all collections</h1>
-          {allCollection&& allCollection.map((item,key)=>{
+          {allNfts&& allNfts.map((item,key)=>{
             return(
-              <CollectionItem key={key} name={item.name} short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
+              <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
             )
           })}
         </section>
@@ -101,4 +79,4 @@ const createcollection = () => {
   )
 }
 
-export default createcollection
+export default allNfts

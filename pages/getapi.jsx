@@ -28,7 +28,7 @@ const getapi = () => {
       <div>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Generate Your API Key
+          Generate Your <span>API Key</span>
         </h1>
 
         <p className={styles.description}>

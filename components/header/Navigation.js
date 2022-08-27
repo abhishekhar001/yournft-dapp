@@ -17,11 +17,12 @@ export default function Navigation() {
     
   return (
     <nav className={styles.navContainer}>
+                    <Link href="/">
                 <p className={styles.navHeading}>
                     Your NFTs Collections
                 </p>
+                </Link>
 
-                
 
                 <ul className={styles.navContainerul}>
                     <li className={styles.navContainerli}>
@@ -35,8 +36,8 @@ export default function Navigation() {
                         </Link>
                     </li>
                     <li className={styles.navContainerli}>
-                    <Link href="/mintNfts">
-                        <a className={styles.navContainera} href="#">Mint NFTs</a>
+                    <Link href="/allNfts">
+                        <a className={styles.navContainera} href="#">All NFTs</a>
                     </Link>
                     </li>
                     <li className={styles.navContainerli}>
