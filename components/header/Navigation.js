@@ -26,22 +26,22 @@ export default function Navigation() {
 
                 <ul className={styles.navContainerul}>
                     <li className={styles.navContainerli}>
-                    <Link href="/getapi">
-                        <a className={styles.navContainera} >API key {yourAPikey&& `(${yourAPikey.substring(0,6)}...)`}</a>
+                    <Link href="/Getapi">
+                        <a className={styles.navContainera} > {yourAPikey?  `API key(${yourAPikey.substring(0,6)}...)`:"Generate API key"}</a>
                     </Link>
                     </li>
                     <li className={styles.navContainerli}>
-                    <Link href="/createcollection">
+                    <Link href="/Createcollection">
                         <a className={styles.navContainera} href="#">Create Collection</a>
                         </Link>
                     </li>
                     <li className={styles.navContainerli}>
-                    <Link href="/allNfts">
+                    <Link href="/AllNfts">
                         <a className={styles.navContainera} href="#">All NFTs</a>
                     </Link>
                     </li>
                     <li className={styles.navContainerli}>
-                    <Link href="/transferNft">
+                    <Link href="/TransferNft">
                         <a className={styles.navContainera} href="#">Transfer NFT</a>
                     </Link>
                     </li>

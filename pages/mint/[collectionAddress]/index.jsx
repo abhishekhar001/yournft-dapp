@@ -95,6 +95,10 @@ const MintNfts = () => {
           Mint NFT for Collection
         </h1>
         <p>{collectionAddress}</p>
+
+        {!yourAPikey&&
+          <h3>Please first Generate API key. After that you can use other features.</h3>
+          }
         <section>
           <form onSubmit={MintHandler} style={{marginTop:"2rem"}}>
             <input className={styles.input_box_main} type="text" name='nft_id' placeholder='NFT id' />

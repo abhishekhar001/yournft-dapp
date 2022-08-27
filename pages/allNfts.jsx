@@ -55,6 +55,9 @@ const AllNFTs = () => {
         </h1>
        
         <section style={{textAlign:"center"}}>
+          {!yourAPikey&&
+          <h3>Please first Generate API key. After that you can use other features.</h3>
+          }
           {loadingAllNFTs?
           <div className={styles.loader_1}></div>
           :

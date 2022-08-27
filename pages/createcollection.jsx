@@ -74,6 +74,9 @@ const Createcollection = () => {
         <h1 className={styles.title}>
           Create New Collections
         </h1>
+        {!yourAPikey&&
+          <h3>Please first Generate API key. After that you can use other features.</h3>
+          }
         <section>
           <form onSubmit={createCollectionHandler} style={{marginTop:"2rem"}}>
             <input className={styles.input_box_main} type="text" name='collectionname' placeholder='Collection Name' />
