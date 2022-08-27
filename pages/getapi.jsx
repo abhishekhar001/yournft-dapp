@@ -7,7 +7,7 @@ import { apikeystate } from '../atoms/apiStateMangment'
 import { useRecoilState } from 'recoil'
 
 
-const getapi = () => {
+const Getapi = () => {
     const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
 
     const [apiGeneratingLoading, setApiGeneratingLoading] = useState(false)
@@ -47,7 +47,7 @@ const getapi = () => {
             {yourAPikey?
             <p>Your current API: {yourAPikey}</p>
             :
-            <p>Please generate API. You don't have any api yet</p>
+            <p>Please generate API. You do not have any api yet</p>
             }
 
         </section>
@@ -59,4 +59,4 @@ const getapi = () => {
   )
 }
 
-export default getapi
+export default Getapi

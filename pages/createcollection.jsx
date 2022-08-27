@@ -7,7 +7,7 @@ import { apikeystate } from '../atoms/apiStateMangment'
 import { useRecoilState } from 'recoil'
 import CollectionItem from '../components/createCollection/CollectionItem';
 
-const createcollection = () => {
+const Createcollection = () => {
 
   const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
   const [allCollection, setAllCollection] = useState(null);
@@ -99,4 +99,4 @@ const createcollection = () => {
   )
 }
 
-export default createcollection
+export default Createcollection

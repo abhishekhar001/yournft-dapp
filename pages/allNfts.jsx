@@ -9,8 +9,7 @@ import { useRecoilState } from 'recoil'
 import {useRouter} from 'next/router'
 import NFTCard from '../components/mintNft/NftCard';
 
-const allNFTs = () => {
-
+const AllNFTs = () => {
   const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
   const [loadingAllNFTs, setLoadingAllNFTs] = useState(true);
   const [allNFTs, setAllNFTs] = useState([]);
@@ -66,7 +65,7 @@ const allNFTs = () => {
               )
             })
             :
-            <p>You have't mint nfts yet</p>
+            <p>You have not mint nfts yet</p>
           }
         </section>
         </main>
@@ -75,4 +74,4 @@ const allNFTs = () => {
   )
 }
 
-export default allNFTs
+export default AllNFTs

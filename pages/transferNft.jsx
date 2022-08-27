@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
 
-const transferNFT = () => {
+const TransferNFT = () => {
 
   return (
     <>
@@ -21,4 +21,4 @@ const transferNFT = () => {
   )
 }
 
-export default transferNFT
+export default TransferNFT

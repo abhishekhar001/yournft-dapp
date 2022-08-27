@@ -10,7 +10,7 @@ import CollectionItem from '../../../components/createCollection/CollectionItem'
 import {useRouter} from 'next/router'
 import NFTCard from '../../../components/mintNft/NftCard';
 
-const createcollection = () => {
+const MintNfts = () => {
 
   const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
 
@@ -114,7 +114,7 @@ const createcollection = () => {
               <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
             )
           }):
-          <p>You have't any nfts</p>
+          <p>You have not any nfts</p>
           }
         </section>
         </main>
@@ -123,4 +123,4 @@ const createcollection = () => {
   )
 }
 
-export default createcollection
+export default MintNfts
