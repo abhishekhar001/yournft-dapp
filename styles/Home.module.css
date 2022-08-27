@@ -2,6 +2,38 @@
   padding: 0 2rem;
 }
 
+.navContainer{
+  display: flex;
+  padding: 2% 4%;
+  align-items: center;
+  justify-content: space-between;
+}
+.navHeading{
+  font-size: 2rem;
+}
+
+.navContainerul{
+  display: flex;
+  text-align: right;
+}
+.navContainerli{
+  list-style:none;
+  display: inline-block;
+  padding: 0.3rem 0.5rem;
+  position: relative;
+}
+.navContainera{
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.navContainera:hover{
+  color: #0070f3;
+  transition: 0.4s;
+
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
