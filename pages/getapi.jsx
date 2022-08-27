@@ -10,14 +10,18 @@ import { useRecoilState } from 'recoil'
 const getapi = () => {
     const [yourAPikey, setYourAPikey] = useRecoilState(apikeystate);
 
+    const [apiGeneratingLoading, setApiGeneratingLoading] = useState(false)
+
 
     const generateAPI = async () => {
-        const url = "https://thentic.tech/api/key"
-
-        const _api = await axios.get(url);
-        
-        localStorage.setItem('apikey', _api.data);
-        setYourAPikey(_api.data)
+      setApiGeneratingLoading(true)
+      const url = "https://thentic.tech/api/key"
+      
+      const _api = await axios.get(url);
+      
+      localStorage.setItem('apikey', _api.data);
+      setYourAPikey(_api.data)
+      setApiGeneratingLoading(false)
     }
 
   return (
@@ -32,12 +36,12 @@ const getapi = () => {
         </h1>
 
         <p className={styles.description}>
-          this api key will be used to ....{' '}
-          <code className={styles.code}>Directly using apis</code>
+          Using these api you can Create, Mint or trade NFT{' '}
+          <code className={styles.code}>Directly</code>
         </p>
 
         <section style={{textAlign:'center'}}>
-            <button onClick={generateAPI}>
+            <button className={styles.btn_main} onClick={generateAPI}>
                 Generate {yourAPikey && "New"} API
             </button>
             {yourAPikey?
@@ -45,7 +49,10 @@ const getapi = () => {
             :
             <p>Please generate API. You don't have any api yet</p>
             }
+
         </section>
+            <div style={{visibility:apiGeneratingLoading?"visible":"hidden"}} className={styles.loader_1}></div>
+        
         </main>
       </div>
     </>
