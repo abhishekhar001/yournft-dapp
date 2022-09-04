@@ -10,7 +10,7 @@ export default function CollectionItem({name,short_name,contract,status,chain_id
             {/* <p>Status - {status}</p> */}
             <p>chain id: {chain_id}</p>
 
-            {!contract?
+            {contract?
             <>
             <p>Contract address - {contract}</p>
             <Link href={`/mint/${contract}`}>
