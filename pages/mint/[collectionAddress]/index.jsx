@@ -23,28 +23,12 @@ const MintNfts = () => {
 
 //   <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
 
-  const _demonft = {
-    name:"nft nameee",
-    data:"url data",
-    id:"7",
-    name:"collectionName",
-    short_name:"short name",
-    status:"pending",
-    contract:collectionAddress,
-    chain_id:93
-  }
-  const loadAllNFTs =  async() => {
-    const api = "https://thentic.tech/api/nfts";
-    const values = {
-      params:{
-        key:yourAPikey,
-        chain_id: 97
-      }
-    }
-    const _res = await axios.get(api, values,{header:{"Content-Type":"application/json",key:yourAPikey,
-    chain_id: 97}});
 
-    console.log('====================================');
+  const loadAllNFTs =  async() => {
+    const api = `https://thentic.tech/api/nfts?key=${yourAPikey}&chain_id=97`;
+    const _res = await axios.get(api,{header:{"Content-Type":"application/json"}});
+
+    console.log('===========allnfts=========================');
     console.log(_res.data);
     console.log('====================================');
     setAllNFTs(_res.data.nfts)

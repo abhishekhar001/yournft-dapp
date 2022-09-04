@@ -15,17 +15,13 @@ const Createcollection = () => {
   const [loadingCollection, setLoadingCollection] = useState(true);
   const [loadingCreateColletion, setLoadingCreateColletion] = useState(false)
 
-  const loadAllCollections =  async() => {
-    const api = "https://thentic.tech/api/contracts";
-    
+  const loadAllCollections =  async() => {    
     const values = {
-      params:{
         key:yourAPikey,
         chain_id: 97
-      }
     }
-    const _res = await axios.get(api, values,{header:{"Content-Type":"application/json",key:yourAPikey,
-    chain_id: 97}});
+    const api = `https://thentic.tech/api/contracts?key=${yourAPikey}&chain_id=${values.chain_id}`;
+    const _res = await axios.get(api,{header:{"Content-Type":"application/json"}});
     console.log('====================================');
     console.log(_res.data);
     console.log('====================================');
