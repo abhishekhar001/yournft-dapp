@@ -1,6 +1,5 @@
 import Link from "next/link"
 import styles from '../../styles/Home.module.css'
-import ReactHtmlParser from 'react-html-parser';
 
 
 export default function CollectionItem({ name, short_name, contract, status, chain_id, transaction_url,transaction_pixel }) {
