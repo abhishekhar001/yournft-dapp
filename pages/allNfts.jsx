@@ -15,13 +15,14 @@ const AllNFTs = () => {
   const [allNFTs, setAllNFTs] = useState([]);
 
   const loadAllNFTs =  async() => {
-    const api = `https://thentic.tech/api/contracts?key=${yourAPikey}&chain_id=97`;
+    const api = `https://thentic.tech/api/nfts?key=${yourAPikey}&chain_id=97`;
+    
     const _res = await axios.get(api,{header:{"Content-Type":"application/json"}});
 
     console.log('===============all nfts=====================');
     console.log(_res.data);
     console.log('====================================');
-    setAllNFTs(_res.data.nfts)
+    setAllNFTs(_res.data.nfts);
     setLoadingAllNFTs(false);
 
   }
@@ -54,7 +55,7 @@ const AllNFTs = () => {
           allNFTs.length !== 0?
           allNFTs.map((item,key)=>{
             return(
-              <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
+              <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} transaction_url={item.transaction_url}/>
               )
             })
             :

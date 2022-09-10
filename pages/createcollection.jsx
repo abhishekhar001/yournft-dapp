@@ -88,7 +88,7 @@ const Createcollection = () => {
           :
           allCollection&& allCollection.map((item,key)=>{
             return(
-              <CollectionItem key={key} name={item.name} short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
+              <CollectionItem key={key} name={item.name} transaction_pixel={item.transaction_pixel} transaction_url={item.transaction_url} short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
             )
           })}
         </section>

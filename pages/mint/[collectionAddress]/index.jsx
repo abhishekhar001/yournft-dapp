@@ -19,7 +19,9 @@ const MintNfts = () => {
 
   const [allNFTs, setAllNFTs] = useState([]);
 
-  const {collectionAddress} = useRouter();
+  const {collectionAddress} = useRouter().query;
+
+
 
 //   <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
 
@@ -49,12 +51,19 @@ const MintNfts = () => {
         key:yourAPikey,
         chain_id: 97,
         contract:collectionAddress,
-        nft_id:e.target.nft_id.value,
-        nft_data:e.target.nft_data.value,
-        to:e.target.nft_data.mint_to,
+        nft_id:Number(e.target.nft_id.value),
+        nft_data:String(e.target.nft_data.value),
+        to:String(e.target.mint_to.value),
 
       }
-      const _res = await axios.post(api, values);
+      try {
+        console.log(values);
+        await axios.post(api, values);
+      } catch (error) {
+        console.log('====================================');
+        console.log(error);
+        console.log('====================================');
+      }
       setLoadingMintNFT(false)
       loadAllNFTs()
     }
@@ -65,9 +74,6 @@ const MintNfts = () => {
       }
     }, [yourAPikey])
     
-
-
-
   return (
     <>
       <Head>
@@ -78,15 +84,14 @@ const MintNfts = () => {
         <h1 className={styles.title}>
           Mint NFT for Collection
         </h1>
-        <p>{collectionAddress}</p>
-
+        <h6>{collectionAddress}</h6>
         {!yourAPikey&&
           <h3>Please first Generate API key. After that you can use other features.</h3>
           }
         <section>
           <form onSubmit={MintHandler} style={{marginTop:"2rem"}}>
             <input className={styles.input_box_main} type="text" name='nft_id' placeholder='NFT id' />
-            <input className={styles.input_box_main} type="text" name='nft_data' placeholder='NFT Data' />
+            <input className={styles.input_box_main} type="text" name='nft_data' placeholder='NFT Image url' />
             <input className={styles.input_box_main} type="text" name='mint_to' placeholder='User Wallet address' />
             
             <button  className={styles.btn_main} type='submit'>{loadingMintNFT? "Minting...": "Mint NFT"}</button>
@@ -99,7 +104,7 @@ const MintNfts = () => {
           :
           allNFTs.length !== 0? allNFTs.map((item,key)=>{
             return(
-              <NFTCard key={key} name={item.name} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
+              <NFTCard key={key} name={item.name} transaction_url={item.transaction_url} data={item.data} id={item.id}short_name={item.short_name} status={item.status} contract={item.contract} chain_id={item.chain_id} />
             )
           }):
           <p>You have not any nfts</p>
